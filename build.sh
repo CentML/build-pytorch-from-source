@@ -19,8 +19,8 @@ build_pytorch_image () {
   local dockerfile=${3:-"pyt.Dockerfile"}
   local push=${4:-"none"}  # "push" or "none"
 
-  local ram_kb = $(grep MemTotal /proc/meminfo | awk '{print $2}')
-  local ram_gb = $(expr $RAM_KB / 1024 / 1024)
+  local ram_kb=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+  local ram_gb=$(expr $ram_kb / 1024 / 1024)
 
   if [[ -z "${COMMIT}" ]]; then
     local build_arg_flag_commit="--build-arg COMMIT=${COMMIT}"
@@ -35,8 +35,8 @@ build_pytorch_image () {
     --rm \
     --build-arg CUDA_TAG=${cuda_tag} \
     ${build_arg_flag_commit} \
-    -t ${pi_base_url} \
-    - < docker/${dockerfile}
+    -t ${tag} \
+    - < ${dockerfile}
 
   _push_image ${push} ${pi_api_url}
 }
