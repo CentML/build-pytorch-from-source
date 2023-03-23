@@ -21,10 +21,12 @@ cd build-pytorch-from-source/
 ### Environment Variables
 
 - `COMMIT` is the commit SHA from PyTorch's official repo.
-- `CUDA_TAG` is the tag of the CUDA image that you can find from [here](https://hub.docker.com/r/nvidia/cuda) 
+- `CUDA_TAG` is the tag of the CUDA image that you can find from [here](https://hub.docker.com/r/nvidia/cuda).
+  Do make sure that your NVIDIA GPU driver supports the CUDA version that you want to
+  use.
 - `PYTHON_VERSION` is the Python version (I suppose only 3.8+ is supported these days).
-- `USE_MPI` refers to [here](https://github.com/pytorch/pytorch/blob/master/setup.py).
-- `TORCH_CUDA_ARCH_LIST` refers to [here](https://github.com/pytorch/pytorch/blob/master/setup.py).
+- `USE_MPI` enable/disable distributed MPI backend build. Please refer to [here](https://github.com/pytorch/pytorch/blob/master/setup.py).
+- `TORCH_CUDA_ARCH_LIST` is the CUDA architectures to build for. Please refer to [here](https://github.com/pytorch/pytorch/blob/master/setup.py).
 
 Please submit a PR if you find some environment variables you want to have but this 
 script currently doesn't have.
