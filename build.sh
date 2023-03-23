@@ -15,7 +15,7 @@ _push_image () {
 
 build_pytorch_image () {
   local tag=${1:-"pytorch:latest"}
-  local cuda_tag=${2:-"12.0.1-cudnn8-devel-ubuntu22.04"}
+  local cuda_tag=${2:-"11.8.0-cudnn8-devel-ubuntu20.04"}
   local dockerfile=${3:-"pyt.Dockerfile"}
   local push=${4:-"none"}  # "push" or "none"
 

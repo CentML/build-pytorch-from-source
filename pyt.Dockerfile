@@ -5,14 +5,19 @@ ARG COMMIT=3282030fa4cce46f1714c570484a81f059a83615
 
 ARG PYTHON_VERSION=3.8
 ARG USE_MPI=1
-ARG TORCH_CUDA_ARCH_LIST="7.0;7.5;8.0;8.6;8.9;9.0"
+ARG TORCH_CUDA_ARCH_LIST="7.0;7.5;8.0;8.6;8.9"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt update -qq && \
-    apt install -y --no-install-recommends wget git build-essential cmake ninja-build \
+    apt install -y --no-install-recommends wget git build-essential ninja-build lsb-release \
       ccache && \
     rm -rf /var/cache/apk/*
+
+RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
+run apt update -qq && apt install -y software-properties-common
+RUN apt-add-repository "deb https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main"
+RUN apt update && apt install -y cmake
 
 WORKDIR /Downloads
 ARG CONDA_INSTALL_SCRIPT=Miniconda3-py38_23.1.0-1-Linux-x86_64.sh
