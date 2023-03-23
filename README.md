@@ -9,7 +9,7 @@ PyTorch's CI scripts, if you have the time and patience). Hence, this repo serve
 ## Usage
 
 ```
-git clone git@github.com:CentML/build-pytorch-from-source.git
+git clone https://github.com/CentML/build-pytorch-from-source.git
 cd build-pytorch-from-source/
 <environment variable>=<value> ... bash build.sh <tag> <push> <dockerfile>
 ```
@@ -25,7 +25,7 @@ cd build-pytorch-from-source/
   Do make sure that your NVIDIA GPU driver supports the CUDA version that you want to
   use.
 - `PYTHON_VERSION` is the Python version (I suppose only 3.8+ is supported these days).
-- `USE_MPI` enable/disable distributed MPI backend build. Please refer to [here](https://github.com/pytorch/pytorch/blob/master/setup.py).
+- `USE_MPI` enables/disables distributed MPI backend build. Please refer to [here](https://github.com/pytorch/pytorch/blob/master/setup.py).
 - `TORCH_CUDA_ARCH_LIST` is the CUDA architectures to build for. Please refer to [here](https://github.com/pytorch/pytorch/blob/master/setup.py).
 
 Please submit a PR if you find some environment variables you want to have but this 
