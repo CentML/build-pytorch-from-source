@@ -1,21 +1,20 @@
 ARG CUDA_TAG
 FROM nvidia/cuda:${CUDA_TAG}
 
-ARG COMMIT=3282030fa4cce46f1714c570484a81f059a83615
-
-ARG PYTHON_VERSION=3.8
-ARG USE_MPI=1
-ARG TORCH_CUDA_ARCH_LIST="7.0;7.5;8.0;8.6;8.9;9.0"
+ARG COMMIT
+ARG PYTHON_VERSION
+ARG USE_MPI
+ARG TORCH_CUDA_ARCH_LIST
+ARG MINICONDA_VERSION
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt update -qq && \
-    apt install -y --no-install-recommends wget git build-essential cmake ninja-build \
-      ccache && \
+    apt install -y --no-install-recommends wget git ccache && \
     rm -rf /var/cache/apk/*
 
 WORKDIR /Downloads
-ARG CONDA_INSTALL_SCRIPT=Miniconda3-py38_23.1.0-1-Linux-x86_64.sh
+ARG CONDA_INSTALL_SCRIPT=Miniconda3-${MINICONDA_VERSION}.sh
 ARG CONDA_INSTALL_DIR=/opt/conda
 RUN wget https://repo.anaconda.com/miniconda/${CONDA_INSTALL_SCRIPT} && \
     bash ${CONDA_INSTALL_SCRIPT} -b -p ${CONDA_INSTALL_DIR} && \
@@ -29,6 +28,14 @@ RUN git checkout ${COMMIT} && \
     git submodule sync && \
     git submodule update --init --recursive
 
+RUN conda install -y cmake ninja
+RUN conda install -y -c conda-forge libstdcxx-ng
 RUN pip install -r requirements.txt
-RUN conda install mkl mkl-include
-RUN USE_MPI=${USE_MPI} TORCH_CUDA_ARCH_LIST=${TORCH_CUDA_ARCH_LIST} python setup.py develop
+RUN conda install -y mkl mkl-include
+# The problem with magma-cuda* is that it's always significant lagging behind the 
+# latest CUDA version.
+# RUN conda install -c pytorch magma-cuda110
+RUN CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"} \
+    USE_MPI=${USE_MPI} \
+    TORCH_CUDA_ARCH_LIST=${TORCH_CUDA_ARCH_LIST} \
+    python setup.py develop
