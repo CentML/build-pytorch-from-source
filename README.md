@@ -8,7 +8,7 @@ PyTorch's CI scripts, if you have the time and patience). Hence, this repo serve
 
 ## Usage
 
-```
+```bash
 git clone https://github.com/CentML/build-pytorch-from-source.git
 cd build-pytorch-from-source/
 <environment variable>=<value> ... bash build.sh <tag> <push> <dockerfile>
@@ -33,17 +33,27 @@ script currently doesn't have.
 
 ## Example
 
-```
+```bash
 PYTHON_VERSION=3.8 USE_MPI=1 bash build.sh my-pytorch:latest
 ```
 
 ## Tested
 
-```
+```bash
 COMMIT=712bd9ae8826cb11d2989bbe5f7b4e1cc3802831 \
 CUDA_TAG=12.0.1-cudnn8-devel-ubuntu22.04 \
 PYTHON_VERSION=3.8 \
 USE_MPI=1 \
+TORCH_CUDA_ARCH_LIST="7.0;7.5;8.0;8.6;8.9;9.0" \
+bash build.sh
+```
+
+wangshangsam/pytorch:2.1.0a0git7711d24717a2a76a202c3438286aaf87d4dc359c-cuda12.0.1-cudnn8-devel-ubuntu22.04-py38:
+```bash
+COMMIT=7711d24717a2a76a202c3438286aaf87d4dc359c \
+CUDA_TAG=12.0.1-cudnn8-devel-ubuntu22.04 \
+PYTHON_VERSION=3.8 \
+USE_MPI=1 \                                     
 TORCH_CUDA_ARCH_LIST="7.0;7.5;8.0;8.6;8.9;9.0" \
 bash build.sh
 ```
