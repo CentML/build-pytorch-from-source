@@ -52,3 +52,6 @@ bash build.sh
 
 As you can see in the [LICENSE](LICENSE), this is a piece of free (in every sense of the 
 word) software, so use it at your own risk!
+
+This is not an official CentML product. My initial motivation to build it is only for 
+my own convenience.
