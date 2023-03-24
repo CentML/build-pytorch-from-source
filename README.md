@@ -48,6 +48,15 @@ TORCH_CUDA_ARCH_LIST="7.0;7.5;8.0;8.6;8.9;9.0" \
 bash build.sh
 ```
 
+```bash
+COMMIT=712bd9ae8826cb11d2989bbe5f7b4e1cc3802831 \
+CUDA_TAG=11.8.0-cudnn8-devel-ubuntu20.04 \
+PYTHON_VERSION=3.8 \
+USE_MPI=1 \
+TORCH_CUDA_ARCH_LIST="7.0;7.5;8.0;8.6;8.9;9.0" \
+bash build.sh
+```
+
 wangshangsam/pytorch:2.1.0a0git7711d24717a2a76a202c3438286aaf87d4dc359c-cuda12.0.1-cudnn8-devel-ubuntu22.04-py38:
 ```bash
 COMMIT=7711d24717a2a76a202c3438286aaf87d4dc359c \
