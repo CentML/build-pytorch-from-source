@@ -14,9 +14,10 @@ cd build-pytorch-from-source/
 <environment variable>=<value> ... bash build.sh <tag> <push> <dockerfile>
 ```
 
-- `<tag>` is the tage that you name the resulting image with.
-- `<push>` is `push` (if you want to push this image to an image registry) or `none`.
-- `<dockerfile>` is the path to the Dockerfile that you want to use. 
+- `<tag>` is the tag that you name the resulting image as.
+- `<push>` is either `push` (if you want to push this image to an image registry somewhere) or `none`.
+- `<dockerfile>` is the path to the Dockerfile that you want to use. Unless you make a copy of 
+  `pyt.Dockerfile` and customize your copy, you really don't need to worry about this argument. 
 
 ### Environment Variables
 
@@ -57,7 +58,7 @@ TORCH_CUDA_ARCH_LIST="7.0;7.5;8.0;8.6;8.9;9.0" \
 bash build.sh
 ```
 
-wangshangsam/pytorch:2.1.0a0git7711d24717a2a76a202c3438286aaf87d4dc359c-cuda12.0.1-cudnn8-devel-ubuntu22.04-py38:
+[wangshangsam/pytorch:2.1.0a0git7711d24717a2a76a202c3438286aaf87d4dc359c-cuda12.0.1-cudnn8-devel-ubuntu22.04-py38](https://hub.docker.com/layers/wangshangsam/pytorch/2.1.0a0git7711d24717a2a76a202c3438286aaf87d4dc359c-cuda12.0.1-cudnn8-devel-ubuntu22.04-py38/images/sha256-584cadabcfdbbe8dcf9f3d1f36e6dd186d4c743287ad3941e85fc190f1c134be?context=repo):
 ```bash
 COMMIT=7711d24717a2a76a202c3438286aaf87d4dc359c \
 CUDA_TAG=12.0.1-cudnn8-devel-ubuntu22.04 \
