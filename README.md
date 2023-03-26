@@ -39,7 +39,7 @@ PYTHON_VERSION=3.8 USE_MPI=1 bash build.sh my-pytorch:latest
 ```
 
 ## Tested
-[wangshangsam/pytorch:2.1.0a0git7711d24717a2a76a202c3438286aaf87d4dc359c-cuda12.0.1-cudnn8-devel-ubuntu22.04-py38](https://hub.docker.com/layers/wangshangsam/pytorch/2.1.0a0git7711d24717a2a76a202c3438286aaf87d4dc359c-cuda12.0.1-cudnn8-devel-ubuntu22.04-py38/images/sha256-584cadabcfdbbe8dcf9f3d1f36e6dd186d4c743287ad3941e85fc190f1c134be?context=repo):
+[wangshangsam/pytorch:2.1.0a0git7711d24-cuda12.0.1-cudnn8-devel-ubuntu22.04-py38](https://hub.docker.com/layers/wangshangsam/pytorch/2.1.0a0git7711d24-cuda12.0.1-cudnn8-devel-ubuntu22.04-py38/images/sha256-01794706736945167a5ea3b6b227c9dfcea6ef86eb37816dcc080a25f28b819b):
 ```bash
 CUDA_TAG=12.0.1-cudnn8-devel-ubuntu22.04 \
 COMMIT=7711d24717a2a76a202c3438286aaf87d4dc359c \
