@@ -22,8 +22,10 @@ push=${2:-"none"}  # "push" or "none"
 dockerfile=${3:-"pyt.Dockerfile"}
 
 # Pass in as in environment variables.
-COMMIT=${COMMIT:-"3282030fa4cce46f1714c570484a81f059a83615"}
 CUDA_TAG=${CUDA_TAG:-"12.0.1-cudnn8-devel-ubuntu22.04"}
+COMMIT=${COMMIT:-"7711d24717a2a76a202c3438286aaf87d4dc359c"}
+VISION_COMMIT=${VISION_COMMIT:-"d4adf08988339a7da81a19ba390d78a629e45c4d"}
+AUDIO_COMMIT=${AUDIO_COMMIT:-"3240de923d3a9f9efe4333eb84afc59231f8f180"}
 PYTHON_VERSION=${PYTHON_VERSION:-"3.8"}
 USE_MPI=${USE_MPI:-"1"}
 TORCH_CUDA_ARCH_LIST=${TORCH_CUDA_ARCH_LIST:-"7.0;7.5;8.0;8.6;8.9;9.0"}
@@ -42,6 +44,8 @@ docker build \
   --rm \
   --build-arg CUDA_TAG=${CUDA_TAG} \
   --build-arg COMMIT=${COMMIT} \
+  --build-arg VISION_COMMIT=${VISION_COMMIT} \
+  --build-arg AUDIO_COMMIT=${AUDIO_COMMIT} \
   --build-arg PYTHON_VERSION=${PYTHON_VERSION} \
   --build-arg USE_MPI=${USE_MPI} \
   --build-arg TORCH_CUDA_ARCH_LIST=${TORCH_CUDA_ARCH_LIST} \

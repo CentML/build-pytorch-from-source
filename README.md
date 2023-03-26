@@ -39,29 +39,12 @@ PYTHON_VERSION=3.8 USE_MPI=1 bash build.sh my-pytorch:latest
 ```
 
 ## Tested
-
-```bash
-COMMIT=712bd9ae8826cb11d2989bbe5f7b4e1cc3802831 \
-CUDA_TAG=12.0.1-cudnn8-devel-ubuntu22.04 \
-PYTHON_VERSION=3.8 \
-USE_MPI=1 \
-TORCH_CUDA_ARCH_LIST="7.0;7.5;8.0;8.6;8.9;9.0" \
-bash build.sh
-```
-
-```bash
-COMMIT=712bd9ae8826cb11d2989bbe5f7b4e1cc3802831 \
-CUDA_TAG=11.8.0-cudnn8-devel-ubuntu20.04 \
-PYTHON_VERSION=3.8 \
-USE_MPI=1 \
-TORCH_CUDA_ARCH_LIST="7.0;7.5;8.0;8.6;8.9;9.0" \
-bash build.sh
-```
-
 [wangshangsam/pytorch:2.1.0a0git7711d24717a2a76a202c3438286aaf87d4dc359c-cuda12.0.1-cudnn8-devel-ubuntu22.04-py38](https://hub.docker.com/layers/wangshangsam/pytorch/2.1.0a0git7711d24717a2a76a202c3438286aaf87d4dc359c-cuda12.0.1-cudnn8-devel-ubuntu22.04-py38/images/sha256-584cadabcfdbbe8dcf9f3d1f36e6dd186d4c743287ad3941e85fc190f1c134be?context=repo):
 ```bash
-COMMIT=7711d24717a2a76a202c3438286aaf87d4dc359c \
 CUDA_TAG=12.0.1-cudnn8-devel-ubuntu22.04 \
+COMMIT=7711d24717a2a76a202c3438286aaf87d4dc359c \
+VISION_COMMIT=d4adf08988339a7da81a19ba390d78a629e45c4d \
+AUDIO_COMMIT=3240de923d3a9f9efe4333eb84afc59231f8f180 \
 PYTHON_VERSION=3.8 \
 USE_MPI=1 \                                     
 TORCH_CUDA_ARCH_LIST="7.0;7.5;8.0;8.6;8.9;9.0" \
